@@ -277,7 +277,7 @@ Step (1) Update `Datetime` component to display `readingTime`
 ```tsx
 // other codes
 
-interface Props extends DatetimesProps, EditPostProps {
+interface Props extends DatetimesProps {
   size?: "sm" | "lg";
   className?: string;
   readingTime: string | undefined; // new type
@@ -288,7 +288,6 @@ export default function Datetime({
   modDatetime,
   size = "sm",
   className = "",
-  editPost,
   postId,
   readingTime, // new prop
 }: Props) {
@@ -297,7 +296,6 @@ export default function Datetime({
     <span className={`italic ${size === "sm" ? "text-sm" : "text-base"}`}>
       <FormattedDatetime pubDatetime={pubDatetime} modDatetime={modDatetime} />
       <span> ({readingTime})</span> {/* display reading time */}
-      {size === "lg" && <EditPost editPost={editPost} postId={postId} />}
     </span>
     // other codes
   );
