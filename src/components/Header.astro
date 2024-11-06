@@ -13,22 +13,31 @@ const { activeNav } = Astro.props;
 <header>
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
-    <div class="top-nav-wrap">
-      <a href="/" class="logo whitespace-nowrap">
-        {
-          LOGO_IMAGE.enable ? (
-            <img
-              src={`/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
-              alt={SITE.title}
-              width={LOGO_IMAGE.width}
-              height={LOGO_IMAGE.height}
-            />
-          ) : (
-            SITE.title
-          )
-        }
-      </a>
-      <nav id="nav-menu">
+    <div class="top-nav-wrap flex items-start justify-between">
+      <div class="w-full">
+        <a
+          href="/"
+          class="logo flex w-fit items-center justify-stretch gap-2 whitespace-nowrap"
+        >
+          {
+            LOGO_IMAGE.enable ? (
+              <>
+                <img
+                  src={`/${LOGO_IMAGE.svg ? "logo.svg" : "favicon.png"}`}
+                  alt={SITE.title}
+                  width={LOGO_IMAGE.width}
+                  height={LOGO_IMAGE.height}
+                />
+                {SITE.title}
+              </>
+            ) : (
+              SITE.title
+            )
+          }
+        </a>
+      </div>
+
+      <nav>
         <button
           class="hamburger-menu focus-outline"
           aria-label="Open Menu"
